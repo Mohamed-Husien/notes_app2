@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:note_app/constants.dart';
 
 class CustomAddNoteButton extends StatelessWidget {
-  const CustomAddNoteButton({super.key, this.onTap});
+  const CustomAddNoteButton({super.key, this.onTap, this.isLoading = false});
   final void Function()? onTap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -15,15 +16,23 @@ class CustomAddNoteButton extends StatelessWidget {
           color: kPrimaryColor,
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const Center(
-          child: Text(
-            'Add',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+        child: Center(
+          child: isLoading
+              ? const SizedBox(
+                  height: 26,
+                  width: 26,
+                  child: CircularProgressIndicator(
+                    color: Colors.black,
+                  ),
+                )
+              : const Text(
+                  'Add',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     );
