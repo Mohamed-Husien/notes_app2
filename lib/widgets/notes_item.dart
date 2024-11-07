@@ -50,7 +50,9 @@ class NotesItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  note.delete(); //here i delete note that bc NoteModle be extends HiveObject so can access all hie method
+                },
                 icon: const Icon(
                   Icons.delete,
                   color: Colors.black,
