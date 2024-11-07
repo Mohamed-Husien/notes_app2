@@ -4,14 +4,9 @@ import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 import 'package:note_app/widgets/notes_item.dart';
 
-class NotesListView extends StatefulWidget {
+class NotesListView extends StatelessWidget {
   const NotesListView({super.key});
 
-  @override
-  State<NotesListView> createState() => _NotesListViewState();
-}
-
-class _NotesListViewState extends State<NotesListView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NotesCubit, NotesState>(
@@ -25,9 +20,9 @@ class _NotesListViewState extends State<NotesListView> {
               itemCount: notes.length,
               padding: EdgeInsets.zero,
               itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: NotesItem(),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                  child: NotesItem(note: notes[index]),
                 );
               }),
         );
